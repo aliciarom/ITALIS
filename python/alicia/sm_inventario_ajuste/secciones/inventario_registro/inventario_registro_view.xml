@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+
+<!-- XML Módulo -->
+
+<openerp>
+	<data>
+	
+		<!-- Sección de Form(s) Record(s) -->
+		<!-- El tipo "object" en el tag button es obligatorio -->
+		<!-- En el atributo name del tag button lleva el nombre de la función que imprime el reporte -->
+		
+		<record id="inventario_registro_view" model="ir.ui.view">
+			<field name="name">Registro</field>
+			<field name="model">inventario_registro</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Registro por Producto" version="7.0">
+					<h1>
+							<field name="state" widget="statusbar"/>
+					</h1>
+					<div states="tienda">
+						<group states="tienda" string="Seleccionar Tienda" colspan='4' col='4'>
+			        <field name="almacen_m2o_id" colspan='4'/>
+		        </group>
+		      </div>
+		      <div states="producto">
+		        <group  states="producto" string="Introducir Código de Producto" colspan='4' col='4'>
+			        <field name="ean13_producto" on_change="onchange_obtenerProducto(ean13_producto)" colspan="2"/>
+							<label string=" " colspan="2"/>
+		        </group>
+		      </div>
+					<div states="conteo">
+		        <group  states="conteo" string="Introducir Código de Ubicación" colspan='4' col='4'>
+							<field name="ean13_ubicacion" on_change="guardarConteo(ean13_ubicacion)" colspan="2"/>
+							<label string=" " colspan="2"/>
+							<field name="cant_contado" />
+							<label string=" " colspan="2"/>
+							<group  string="Información del Producto"  colspan='4' col='4'>
+							<field name="imagen" widget="image" nolabel="1" colspan='1'/>
+							<field name="producto_m2o_id" nolabel="1" colspan='3' readonly="1"/>
+							<field name="localizacion_m2o_id" colspan='4' readonly="1"/>
+							<field name="cant_sistema" colspan='2' readonly="1"/>		
+							<field name="medida_m2o_id" readonly='1' colspan='2'/>
+							<field name="cant_ajustar" readonly='1' colspan='2'/>
+							</group>
+		        </group>
+		      </div>
+					
+					
+					<separator colspan="4"/>
+					<footer states="tienda">
+						<button icon="gtk-cancel" special="cancel" string="Cancelar" colspan="2"/>
+						<button icon="gtk-go-forward" name="botonAceptar" string="Aceptar"
+										type="object"
+										colspan="2"
+										default_focus="1" />
+					</footer>
+					
+					<footer states="producto">
+						<group col="4" colspan="4">
+							<button icon="gtk-cancel" special="cancel" string="Terminar" colspan="2"/>
+							<button icon="terp-tools" name="obtenerProducto" string="Buscar"
+											type="object"
+											colspan="2"
+											class="oe_highlight"/>
+						</group>
+					</footer>
+					
+					<footer states="conteo">
+						<group col="4" colspan="4">
+							<button icon="gtk-go-back" name="botonRegresar" string="Regresar" 
+								    type="object"
+								    colspan="2"
+								    default_focus="1" />
+							<button icon="gtk-floppy" name="guardarConteo" string="Guardar"
+										type="object"
+										colspan="2"
+										default_focus="1" />
+						</group>
+					</footer>
+					
+				</form>
+			</field>
+		</record>
+	
+		<!-- Sección de Action(s) Record(s) -->
+		
+		<record id="action_inventario_registro" model="ir.actions.act_window">
+			<field name="name">Registro</field>
+			<field name="res_model">inventario_registro</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="inventario_registro_view"/>
+			<field name="target">new</field>
+		</record>
+		
+		<!-- Sección de Menu(s) Record(s) -->
+		
+		<menuitem name="Registro por Producto"
+			icon="STOCK_PRINT"
+			id="inventario_registro"
+			action="action_inventario_registro"
+			parent="sm_inventario_ajuste.seccion_reg_prod"/>
+	</data>
+</openerp>

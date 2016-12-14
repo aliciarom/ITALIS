@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+
+<openerp>
+	<data>
+		
+		<!-- Tree View Records -->	
+	
+		<record model="ir.ui.view" id="view_merma_tree">		 
+			<field name="name">merma.tree</field>
+			<field name="model">merma</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml" >
+				<tree string="Control de Merma" version="7.0" colors="red: state in ('confirm'); blue: state in ('done');">
+					<field name="clave_numer"/>
+					<field name="fecha_mov"/>
+					<field name="almacen_m2o_id" />
+					<field name="loc_final_dic"/>
+					<field name="n_usuario"/>
+					<field name="state"/>
+				</tree>
+			</field>
+		</record>
+	
+		<!-- Form View Records -->
+		<record model="ir.ui.view" id="view_merma_form">
+			<field name="name">merma.form</field>
+			<field name="model">merma</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Control de Merma" version="7.0">
+					<header>
+						<label string="* Al Ejecutar Realiza el Movimiento a Ubicación Destino *" states="confirm" colspan="2"/>
+						<label string="* Al Confirmar ya no podra seguir Editando *" states="draft" colspan="2"/>
+						<button name="accion_confirmar" states="draft" string="Confirmar Movimiento" type="object" class="oe_highlight"/>
+						<button name="accion_ejecutar" states="confirm" string="Ejecutar Movimiento" type="object"  class="oe_highlight"/>
+						<button name="accion_cancelar_borrador" states="confirm" string="Cancelar Borrador" type="object"/>
+						<label string="* Realiza el Movimiento a Ubicación Final Merma *" states="done" colspan="2"/>
+						<button name="accion_enviar_a" states="done" string="Realizar" type="object" class="oe_highlight"/>
+						<field name="state" widget="statusbar" statusbar_visible="draft,confirm,done,banco-alma"/>
+          </header>
+					<group string="Control de Merma" col="4" colspan="2">
+						<field name="clave_numer" readonly="1" colspan="2"/>
+						<field name="n_usuario" readonly="1" colspan="2"/>
+            <field name="fecha_mov" colspan="2" attrs="{'readonly': [('state','in',('confirm','done','cancel','banco-alma'))]}"/>
+						<field name="consultado" colspan="2" invisible="1"/>
+						<field name="almacen_m2o_id" attrs="{ 'readonly' : ['|', ( 'consultado', '=', True ),( 'state', 'in', ('confirm','done','cancel','banco-alma') ) ]}"/>
+						<label string=" " colspan="2"/>
+						<field name="loc_final_dic" attrs="{ 'readonly' : ['|', ( 'consultado', '=', True ),( 'state', 'in', ('confirm','done','cancel', 'banco-alma') ) ]}"/>
+					</group>
+					<field name="se_creo" invisible="1"/>
+					<group string="Buscar Productos" col="4" colspan="4" attrs="{ 'invisible' : [ ( 'state', 'in', ('confirm','done','cancel','banco-alma') ) ]}">
+					<button name="obtenerProductos"
+											string="Obtener Productos"
+											type="object"
+											class="oe_highlight"/>
+					</group>
+					<group string="Lista de Productos" col="4" colspan="4">
+					<label string="* Para indicar lo que se va a enviar a Merma dar clic sobre los campos UBICACION FINAL y CANTIDAD MERMA *" states="done" colspan="4"/>	
+					<field name="selecc_merma_m2m" nolabel="1"
+								 attrs="{ 'readonly' : [ ( 'state', 'in', ('confirm','done','cancel','banco-alma') ) ]}">
+						<tree string="Merma seleccion" version="7.0" editable="bottom"> 
+							<field name="clave_ide" readonly="1"/>	
+							<field name="fecha_creacion" readonly="1"/>
+							<field name="producto_s_m2o_id" readonly="1"/>
+							<field name="location_id" readonly="1"/>
+							<field name="destino_id" readonly="1"/>
+							<field name="cantidad" readonly="1"/>
+							<field name="product_m2o_med_id" readonly="1"/>
+							<field name="precio_prod" readonly="1"/>
+							<field name="se_llevo"/>
+							<field name="cantidad_banco"/>
+							<field name="usuario_m2o_id" readonly="1"/>
+            </tree>
+          </field>  
+					</group>
+         <group string="Imprimir Reporte" col="4" colspan="4" attrs="{ 'invisible' : [ ( 'state', 'in', ('confirm','draft','done','cancel') ) ]}">
+						<button name="imprimir_reporte_banco"
+										string="Imprimir"
+										type="object"
+										icon="gtk-print"
+										colspan="4"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Search View Records -->
+	
+		<record  model="ir.ui.view" id="view_merma_search">
+			<field name="name">merma.search</field>
+			<field name="model">merma</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Control de Merma">
+					<field name="fecha_mov"/>
+					<field name="n_usuario"/>
+					<field name="almacen_m2o_id" />
+					<field name="loc_final_dic"/>
+				</search>
+			</field>
+		</record>
+	
+		<!-- Action Records -->	
+	
+		<record model="ir.actions.act_window" id="action_merma">
+			<field name="name">Control de Merma</field>
+			<field name="view_id" ref="view_merma_tree"/>
+			<field name="res_model">merma</field>
+		</record>
+		
+		<!-- Menu Items -->
+		
+		<menuitem name="Control de Merma"
+					parent="sm_merma.seccion_control"
+					id="lista_merma"
+					action="action_merma"/>
+		
+	</data>
+</openerp>

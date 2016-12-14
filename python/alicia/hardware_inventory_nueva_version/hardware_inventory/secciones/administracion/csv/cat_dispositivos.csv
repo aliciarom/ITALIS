@@ -1,0 +1,22 @@
+clave,descripcion,codigo,activo
+1,Bascula,BAS,TRUE
+2,Bateria,BAT,TRUE
+3,Caja,CAJ,TRUE
+4,Chromebook,CHR,TRUE
+5,CPU,CPU,TRUE
+6,Display,DIS,TRUE
+7,DVR,DVR,TRUE
+8,Escanner,ESC,TRUE
+9,Impresora,IMP,TRUE
+10,Modem,MOD,TRUE
+11,Monitor,MON,TRUE
+12,Raton,MOU,TRUE
+13,Multifuncional,MUL,TRUE
+14,Router,ROU,TRUE
+15,Sonicwall,SONIC,TRUE
+16,Switch,SWI,TRUE
+17,Teclado,TEC,TRUE
+18,Teléfono,TEL,TRUE
+19,Terminal,TER,TRUE
+20,HD Externo,HDE,TRUE
+21,Llave Inalámbrica,KEY,TRUE

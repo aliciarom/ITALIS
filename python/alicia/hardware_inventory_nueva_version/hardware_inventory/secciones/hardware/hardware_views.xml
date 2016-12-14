@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+<openerp>
+  <data>
+    
+    <!-- La vista tree o árbol es una vista en formato lista -->
+    <!--contiene la definicion de la vista-->
+		<record model="ir.ui.view" id="view_hardware_tree">		 
+			<field name="name">hardware.tree</field>
+			<field name="model">hardware</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Inventario de Hardware">
+          <field name="func_key"/>
+					<field name="brad"/>
+          <field name="model"/>
+          <field name="serial_number"/>
+          <field name="status_dic"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Form View Records -->
+    <record model="ir.ui.view" id="view_hardware_form">
+      <field name="name">hardware.form</field>
+      <field name="model">hardware</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Inventario de Hardware" version="7.0" >
+          <sheet>
+          <group colspan='2' col='2'>
+          <h1>
+							<label string="Key:"/>
+							<field name="func_key" class="oe_inline" readonly="1" nolabel="1"/>
+              <field name="image_medium" widget="image" class="oe_avatar oe_left"/>
+					</h1>
+          </group>
+          <group string="Hardware Information" colspan='2' col='4'>
+            <field name="key_number" readonly="1"/>
+            <field name="status_dic"/>
+            <field name="dispositivo_m2o_id"/>
+						<field name="brad"/>
+            <field name="model"
+                   on_change="onchange_model(model)"/>
+            <field name="serial_number"
+                   on_change="onchange_serial_number(serial_number)"/>
+            <field name="hd_capacity" />
+            <field name="ram"/>
+            <field name="mac"
+                   placeholder="00:00:00:00:00:00"
+                   on_change="onchange_mac(mac)"/>
+            <field name="mac_wifi"
+                   placeholder="00:00:00:00:00:00"
+                   on_change="onchange_mac_wifi(mac_wifi)"/>
+ 
+            <field name="sucursal_m2o_id"/>
+            <field name="cost_hardware"/>
+             
+          </group>
+          <group  colspan='2' col='2' >
+            <field name="description" placeholder="Device Description"/>
+            <field name="show_responsible"/>
+          </group>
+          <group  colspan='2' col='4' >
+            <field name="responsible" attrs="{'invisible':[('show_responsible','=', False )]}"/>
+            <field name="format_responsibility" attrs="{'invisible':[('show_responsible','=', False )]}"/>
+          </group>
+          <group string="Maintenance" colspan='2' col='6' >
+            <field name="maintenance_o2m_ids"
+                   domain="[('maintenance_o2m_ids.hardware_m2o_id','=','id')]"
+                   nolabel="1"  attrs="{ 'readonly' : [ ( 'func_key', '=', False ) ] }">
+            <tree string="Maintenance Management" version="7.0" editable="bottom"> 
+            <field name="date"/>
+            <field name="type_maint"/>
+            <field name="responsible_m2o_id"/>
+            </tree>
+            </field>  
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+    <!-- Search View Records -->
+		<record  model="ir.ui.view" id="view_hardware_search">
+			<field name="name">hardware.search</field>
+			<field name="model">hardware</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="hardware">
+          <field name="brad"/>
+					<field name="model"/>
+				</search>
+			</field>
+    </record>
+  <!-- Action Records -->	
+		<record model="ir.actions.act_window" id="action_hardware">
+			<field name="name">Hardware</field>
+			<field name="view_id" ref="view_hardware_tree"/>
+			<field name="view_mode">tree,form</field>
+			<field name="res_model">hardware</field> 
+		</record>
+		<!-- Menu Items -->	
+		<menuitem name="Hardware Inventory"
+							parent="hardware_inventory.top_hardware"  
+							id="inventarioo_hardware"
+							action="action_hardware"/> 
+  </data>
+</openerp>

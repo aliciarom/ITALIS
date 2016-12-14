@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menus XML -->
+<openerp>
+  <data>
+    <menuitem id="top_menu_ajuste_inv" name="SM Ajuste de Inventario" sequence="200"/>
+    <menuitem id="seccion_reg_prod" name="Registrar Producto" sequence="150" parent="sm_inventario_ajuste.top_menu_ajuste_inv"/>
+  </data>
+</openerp>

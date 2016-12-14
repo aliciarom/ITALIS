@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<!-- XML Módulo -->
+
+<openerp>
+	<data>
+	
+		<!-- Sección de Form(s) Record(s) -->
+		<!-- El tipo "object" en el tag button es obligatorio -->
+		<!-- En el atributo name del tag button lleva el nombre de la función que imprime el reporte -->
+		
+		<record id="wizard_codigo_view" model="ir.ui.view">
+			<field name="name">Generador de Etiquetas</field>
+			<field name="model">wizard_codigo</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Lista">
+          <group string="Insertar Códigos" colspan='2' col='2'>
+            <field name="lista"
+									 nolabel="1"
+									 colspan='2'
+									 placeholder="Por favor de insertar los códigos en lista y no dejar espacios entre cada dígito, Recuerde que para llenar una hoja son 36 códigos"/>
+          </group>
+					<group col="4" colspan="4">
+						<button icon="gtk-cancel" special="cancel" string="Cancelar" colspan="2"/>
+            <button name="obtenerCodigos"
+											string="Generar Etiquetas"
+											type="object"
+											class="oe_highlight"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	
+		<!-- Sección de Action(s) Record(s) -->
+		
+		<record id="action_wizard_codigo_report" model="ir.actions.act_window">
+			<field name="name">Generador de Etiquetas</field>
+			<field name="res_model">wizard_codigo</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="wizard_codigo_view"/>
+			<field name="target">new</field>
+		</record>
+		
+		<!-- Sección de Menu(s) Record(s) -->
+		
+		<menuitem icon="STOCK_PRINT"
+			id="menu_wizard_codigo"
+			name="Generar Etiquetas"
+			action="action_wizard_codigo_report"
+			parent="codigos.top_lista"/>
+	</data>
+</openerp>

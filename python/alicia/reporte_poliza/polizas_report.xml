@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report id="reports_asientos_provedor"
+            auto="False"
+            model="account.move"
+            name="report_conta_asientoo"  
+            rml="account/report/report_conta_asientoo.rml"
+            string="Poliza"
+            />
+    </data>
+</openerp>
+
+<!--
+id: the id of the report like any xml tag in OpenERP
+string: the string that will be display on the Client button
+model: the object on which the report will run
+name: the name of the report without the first "report."
+rml: the path to the rml file
+auto: boolean to specify if the server must generate a default parser or not
+header: allows to enable or disable the report header.
+-->

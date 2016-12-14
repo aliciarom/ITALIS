@@ -1,0 +1,9 @@
+clave,nombre,codigo,activo
+1,Bascula Colgante,BAC,TRUE
+2,Bascula Digital,BAD,TRUE
+3,Rebanadora,RBA,TRUE
+4,Refrigerador Abierto,REA,TRUE
+5,Refrigerador Reach ,RER,TRUE
+6,Vehiculo,VEH,TRUE
+7,Unidad HVAC,UHV,TRUE
+8,Vitrina Refrigerante,VIR,TRUE

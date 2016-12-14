@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+
+<openerp>
+	<data>
+		
+		<!-- Tree View Records -->	
+	
+		<record model="ir.ui.view" id="view_inventario_ajuste_tree">		 
+			<field name="name">inventario_ajuste.tree</field>
+			<field name="model">inventario_ajuste</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Ajuste de Inventario">
+					<field name="clave_ide"/>	
+					<field name="fecha_creacion"/>
+					<field name="producto_m2o_id"/>
+					<field name="ean13_producto"/>
+					<field name="location_id"/>
+					<field name="cant_sistema"/>
+					<field name="cant_contada"/>
+					<field name="med_m2o_id"/>
+					<field name="cant_ajuste"/>
+					<field name="estado"/>
+					<field name="usuario_m2o_id"/>
+				</tree>
+			</field>
+		</record>
+	
+		<!-- Form View Records -->	
+	
+		<record model="ir.ui.view" id="view_inventario_ajuste_form">
+			<field name="name">inventario_ajuste.form</field>
+			<field name="model">inventario_ajuste</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Ajuste de Inventario">
+					<group col="2" colspan="2" >
+					<field name="ide_wizard" invisible="1"/>	
+					<field name="clave_ide" readonly="1"/>	
+					<field name="almacen_m2o_id" readonly="1"/>
+					<field name="producto_m2o_id"/>
+					<field name="ean13_producto"/>
+					<field name="location_id"/>
+					<field name="cant_sistema"/>
+					<field name="cant_contada"/>
+					<field name="med_m2o_id"/>
+					<field name="cant_ajuste"/>
+					<field name="estado"/>
+					<field name="usuario_m2o_id"/>
+
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Search View Records -->
+	
+		<record  model="ir.ui.view" id="view_inventario_ajuste_search">
+			<field name="name">inventario_ajuste.search</field>
+			<field name="model">inventario_ajuste</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Ajuste de Inventario">
+				<field name="clave_ide"/>		
+        <field name="fecha_creacion"/>
+				<field name="clave_ide" readonly="1"/>	
+				<field name="almacen_m2o_id" readonly="1"/>
+				<field name="producto_m2o_id"/>
+				<field name="ean13_producto"/>
+				</search>
+			</field>
+		</record>
+	
+		<!-- Action Records -->	
+	
+		<record model="ir.actions.act_window" id="action_inventario_ajuste">
+			<field name="name">Ajuste de Inventario</field>
+			<field name="view_id" ref="view_inventario_ajuste_tree"/>
+			<field name="res_model">inventario_ajuste</field>
+		</record>
+		
+		<!-- Menu Items -->
+		
+		<menuitem name="Ajuste de Inventario"
+					parent="sm_inventario_ajuste.seccion_reg_prod"
+					id="lista_inventario_ajuste"
+					action="action_inventario_ajuste"/>
+		
+	</data>
+</openerp>

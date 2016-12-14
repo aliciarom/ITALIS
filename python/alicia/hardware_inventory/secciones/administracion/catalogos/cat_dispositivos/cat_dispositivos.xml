@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+
+<openerp>
+	<data>
+		
+		<!-- Tree View Records -->	
+	
+		<record model="ir.ui.view" id="view_cat_dispositivos_tree">		 
+			<field name="name">cat_dispositivos.tree</field>
+			<field name="model">cat_dispositivos</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Dispositivos">
+					<field name="descripcion"/>
+					<field name="codigo"/>
+					<field name="activo"/>
+				</tree>
+			</field>
+		</record>
+	
+		<!-- Form View Records -->	
+	
+		<record model="ir.ui.view" id="view_cat_dispositivos_form">
+			<field name="name">cat_dispositivos.form</field>
+			<field name="model">cat_dispositivos</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Dispositivos">
+					<group col="2" colspan="2">
+						<field name="clave"/>
+						<field name="descripcion"/>
+						<field name="codigo"/>
+						<field name="activo"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Search View Records -->
+	
+		<record  model="ir.ui.view" id="view_cat_dispositivos_search">
+			<field name="name">cat_dispositivos.search</field>
+			<field name="model">cat_dispositivos</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Dispositivos">
+					<field name="descripcion"/>
+					<field name="codigo"/>
+					<field name="activo"/>
+				</search>
+			</field>
+		</record>
+	
+		<!-- Action Records -->	
+	
+		<record model="ir.actions.act_window" id="action_cat_dispositivos">
+			<field name="name">Dispositivos</field>
+			<field name="view_id" ref="view_cat_dispositivos_tree"/>
+			<field name="res_model">cat_dispositivos</field>
+		</record>
+		
+		<!-- Menu Items -->	
+		
+		<menuitem name="Lista de Dispositivos"
+							parent="hardware_inventory.top_catalogos"
+							id="lista_cat_dispositivos"
+							action="action_cat_dispositivos"/>
+		
+	</data>
+</openerp>

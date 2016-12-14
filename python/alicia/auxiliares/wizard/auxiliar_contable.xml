@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+<!-- XML Módulo -->
+
+<openerp>
+	<data>
+	
+		<!-- Sección de Form(s) Record(s) -->
+		<!-- El tipo "object" en el tag button es obligatorio -->
+		<!-- En el atributo name del tag button lleva el nombre de la función que imprime el reporte -->
+		
+		<record id="auxiliar_contable_view" model="ir.ui.view">
+			<field name="name">Auxiliar por Cuenta</field>
+			<field name="model">auxiliar_contable</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Auxiliar" version="7.0">
+					<field invisible="1" name="state"/>
+					<div states="choose">
+						<group colspan='2' col='4'>
+							<field name="account_id"
+										 domain="[
+													('type', '!=', 'view'),
+													('type', '!=', 'closed'),
+											]"/>
+							<label string=" " colspan="2"/>
+							<newline/>
+							<separator string="Periodo" colspan="4"/>
+							<field name="por_periodo" colspan="4" on_change="onchange_periodo(por_periodo)"/>
+							<field name="period_id"
+										 attrs="{ 'readonly' : [ ( 'por_periodo', '=', False ) ] }"
+										 />
+							<label string=" " colspan="2"/>
+							<field name="period_fin_id"
+										 attrs="{ 'readonly' : [ ( 'por_periodo', '=', False ) ] }"
+										 />
+							<newline/>
+							<separator string="Fechas" colspan="4" />
+							<field name="rango_fechas" colspan="4" on_change="onchange_rango(rango_fechas)"/>
+							<field name="fecha_inicio"
+										 attrs="{ 'readonly' : [ ( 'rango_fechas', '=', False ) ]}"/>
+							<label string=" " colspan="2"/>
+							<field name="fecha_fin"
+										 attrs="{ 'readonly' : [ ( 'rango_fechas', '=', False ) ]}"/>
+							<label string=" " colspan="2"/>
+						</group>
+					</div>
+					
+					<newline/>
+
+					<div states="get">
+	          <h2> ¡Se a creado el archivo!</h2>
+						<h2>Click en: <field name="report_xls" readonly="1" filename="report_name"/></h2>
+	        </div>
+		
+					<separator colspan="4"/>
+					<footer states="choose">
+						<group colspan='2' col='6'>
+							<button icon="gtk-cancel" special="cancel" string="Cancelar" colspan="2"/>
+							<label string=" " colspan="2"/>
+							<button name="obtenerXlwt"
+											icon="gtk-print"
+											string="Imprimir"
+											type="object"
+											class="oe_highlight" colspan='2'/>
+						</group>
+					</footer>
+	        <footer attrs="{'invisible':[('state','not in', ('get', 'not_file'))]}">
+	          <button icon="gtk-cancel" special="cancel" string="Cerrar" class="oe_link" />
+	        </footer>
+				</form>
+			</field>
+		</record>
+	
+		<!-- Sección de Action(s) Record(s) -->
+		
+		<record id="action_auxiliar_contable_report" model="ir.actions.act_window">
+			<field name="name">Auxiliar por Cuenta</field>
+			<field name="res_model">auxiliar_contable</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="auxiliar_contable_view"/>
+			<field name="target">new</field>
+		</record>
+		
+		<!-- Sección de Menu(s) Record(s) -->
+		
+		<menuitem icon="STOCK_PRINT"
+			id="menu_auxiliar_contable"
+			name="Por cuenta y fecha"
+			action="action_auxiliar_contable_report"
+			parent="auxiliares.top_auxiliar"/>
+	</data>
+</openerp>

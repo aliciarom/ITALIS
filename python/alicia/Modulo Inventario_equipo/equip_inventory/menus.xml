@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menus XML -->
+<openerp>
+  <data>
+    
+        <menuitem id="top_inventario" name="SM Maintenance" sequence="100"/>
+        <menuitem id="top_equipo" name="Maintenance Control" sequence="200" parent="equip_inventory.top_inventario"/>
+          <menuitem id="top_equipo_lista" name="Maintenance Control" sequence="150" parent="equip_inventory.top_equipo"/>
+        <menuitem id="top_catalogos" name="Maintenance Groups" sequence="250" parent="equip_inventory.top_inventario"/>
+  </data>
+</openerp>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+
+<openerp>
+	<data>
+		
+		<!-- Tree View Records -->	
+	
+		<record model="ir.ui.view" id="view_merma_seleccion_tree">		 
+			<field name="name">merma_seleccion.tree</field>
+			<field name="model">merma_seleccion</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Merma seleccion">
+					<field name="clave_ide"/>	
+					<field name="fecha_creacion"/>
+					<field name="producto_s_m2o_id"/>
+					<field name="ean13"/>
+					<field name="location_id"/>
+					<field name="cantidad_ubica"/>
+					<field name="product_m2o_med_id"/>
+					<field name="precio_prod"/>
+					<field name="destino_id"/>
+					<field name="cantidad"/>
+					<field name="ubicacion_final_id"/>
+					<field name="fecha_realizo"/>
+					<field name="cantidad_banco"/>
+					<field name="estado"/>
+					<field name="usuario_m2o_id"/>
+				</tree>
+			</field>
+		</record>
+	
+		<!-- Form View Records -->	
+	
+		<record model="ir.ui.view" id="view_merma_seleccion_form">
+			<field name="name">merma_seleccion.form</field>
+			<field name="model">merma_seleccion</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Merma seleccion">
+					<group col="2" colspan="2" >
+					<field name="ide_wizard" invisible="1"/>	
+					<field name="clave_ide" readonly="1"/>	
+					<field name="almacen_m2o_id" readonly="1"/>	
+					<field name="fecha_creacion" readonly="1"/>
+					<field name="usuario_m2o_id" readonly="1"/>
+          <field name="ean13" readonly="1"/>
+					<field name="producto" invisible="1"/>
+					<field name="producto_s_m2o_id" readonly="1"/>
+					<field name="location_id" readonly="1"/>
+					<field name="cantidad_ubica" readonly="1"/>
+					<field name="product_m2o_med_id" readonly="1"/>
+					<field name="unidad_med" invisible="1"/>
+					<field name="precio_prod" readonly="1"/>
+					<field name="destino_id" readonly="1"/>
+					<field name="nombre_destino" readonly="1"/>
+					<field name="cantidad" readonly="1"/>
+					<field name="name_move" readonly="1"/>
+					<field name="se_llevo" readonly="1"/>
+					<field name="enviar_banco" invisible="1" readonly="1"/>
+					<field name="cantidad_banco" readonly="1"/>
+					<field name="ubicacion_final_id" readonly="1"/>
+					<field name="estado" readonly="1"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Search View Records -->
+	
+		<record  model="ir.ui.view" id="view_merma_seleccion_search">
+			<field name="name">merma_seleccion.search</field>
+			<field name="model">merma_seleccion</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Merma seleccion">
+				<field name="clave_ide"/>		
+        <field name="fecha_creacion"/>
+				<field name="producto_s_m2o_id"/>
+				<field name="location_id"/>
+				<field name="destino_id"/>
+				<field name="usuario_m2o_id"/>
+        <field name="ean13"/>
+				<field name="se_llevo"/>
+				<field name="ubicacion_final_id"/>
+				</search>
+			</field>
+		</record>
+	
+		<!-- Action Records -->	
+	
+		<record model="ir.actions.act_window" id="action_merma_seleccion">
+			<field name="name">Merma Seleccion</field>
+			<field name="view_id" ref="view_merma_seleccion_tree"/>
+			<field name="res_model">merma_seleccion</field>
+		</record>
+		
+		<!-- Menu Items -->
+		
+		<menuitem name="Lista de Producto"
+					parent="sm_merma.seccion_control"
+					id="lista_merma_seleccion"
+					action="action_merma_seleccion"/>
+		
+	</data>
+</openerp>

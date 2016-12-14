@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+<openerp>
+  <data>
+    
+    <!-- La vista tree o árbol es una vista en formato lista -->
+    <!--contiene la definicion de la vista-->
+		<record model="ir.ui.view" id="view_listado_codigo_tree">		 
+			<field name="name">listado_codigo.tree</field>
+			<field name="model">listado_codigo</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Lista de Códigos">
+          <field name="cod_barras"/>
+          <field name="descripcion"/>
+          <field name="precio"/>
+          <field name="fecha"/>
+          <field name="referencia"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Form View Records -->
+    <record model="ir.ui.view" id="view_listado_codigo_form">
+      <field name="name">listado_codigo.form</field>
+      <field name="model">listado_codigo</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Lista de Códigos" version="7.0" >
+          <sheet>
+          <group string="Producto" colspan='2' col='2'>
+            <field name="cod_barras"/>
+            <field name="descripcion"/>
+            <field name="precio"/>
+            <field name="ruta_codigo"/>
+            <field name="fecha"/>
+            <field name="referencia"/>
+            <field name="precio_str" invisible="1" />
+            <field name="fecha_str" invisible="1" />
+          </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+    <!-- Search View Records -->
+		<record  model="ir.ui.view" id="view_listado_codigo_search">
+			<field name="name">listado_codigo.search</field>
+			<field name="model">listado_codigo</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Lista de Códigos">
+          <field name="descripcion"/>
+				</search>
+			</field>
+    </record>
+  <!-- Action Records -->	
+		<record model="ir.actions.act_window" id="action_listado_codigo">
+			<field name="name">Codigos</field>
+			<field name="view_id" ref="view_listado_codigo_tree"/>
+			<field name="view_mode">tree,form</field>
+			<field name="res_model">listado_codigo</field> 
+		</record>
+		<!-- Menu Items -->	
+		<menuitem name="Lista de Códigos"
+							parent="codigos.top_lista"  
+							id="listado_codigo_muestra"
+							action="action_listado_codigo"/>
+    
+  </data>
+</openerp>

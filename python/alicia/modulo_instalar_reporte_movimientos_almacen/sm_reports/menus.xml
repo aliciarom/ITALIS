@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menus XML -->
+<openerp>
+  <data>
+        <menuitem id="top_reports" name="SM Reports" sequence="100"/>
+        <menuitem id="list_report" name="Reports" sequence="200" parent="sm_reports.top_reports"/>
+        <menuitem id="list_report_stock" name="Reports" sequence="200" parent="stock.menu_traceability"/>
+  </data>
+</openerp>

@@ -1,0 +1,217 @@
+<?xml version="1.0"?>
+<document filename="reporte_bancoo.pdf">
+  <template pageSize="(792.0,612.0)"
+						title="stock_move" author="ARC"> 
+    
+    <pageTemplate id="first">
+      <frame id="first"
+             x1="11.0" y1="10.0"
+             width="781"  height="580"/>
+    </pageTemplate>
+  </template>
+  
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+
+    <blockTableStyle id="Table_compra">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <!--cabecera de tabla-->
+    <blockTableStyle id="Tabla_header">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="9,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="9,9"/>
+    </blockTableStyle>
+    <!--datos de la tabla-->
+    <blockTableStyle id="Table1">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBELOW" colorName="#999999" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBELOW" colorName="#999999" start="1,-1" stop="9,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#999999" start="0,0" stop="9,-1"/>
+    </blockTableStyle>
+    
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="main_footer" fontSize="7.0" alignment="CENTER"/>
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="12.0" leading="15" spaceBefore="6.0" spaceAfter="6.0" alignment="CENTER" />
+    <paraStyle name="terp_default_8" fontName="Helvetica" fontSize="7.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_8" fontName="Helvetica-Bold" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Bold_9" fontName="Helvetica-Bold" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="LEFT" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_default_Centre_9" fontName="Helvetica" fontSize="9.0" leading="11" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_General" fontName="Helvetica-Bold" fontSize="8.0" leading="11" alignment="LEFT" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="terp_header_Centre" fontName="Helvetica-Bold" fontSize="15.0" leading="19" alignment="CENTER" spaceBefore="12.0" spaceAfter="6.0"/>
+   <!-- usadas en la relacion -->
+    <paraStyle name="terp_default_Centre_8"         fontName="Helvetica"      fontSize="7.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <paraStyle name="terp_tblheader_General_Centre" fontName="Helvetica-Bold" fontSize="7.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="0.0"/>
+    <images/>
+  </stylesheet>
+  <story>
+  
+  <pto>
+  <!--#repite esto:-->
+  <pto_header>
+  <blockTable colWidths="200.0,100.0,100.0,200.0" style="Table_compra">
+      <tr>
+        <td>
+          <para style="terp_default_Centre_9">
+            SUPERMAS
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="terp_default_8">
+          </para>
+        </td>
+        <td>
+        <para style="terp_default_9"></para>  
+        </td>
+        <td>
+        <para style="terp_default_8"><b>Impresion: </b>[[ formatLang(time.strftime("%Y-%m-%d"), date=True) ]]</para>
+        </td>
+      </tr>
+  </blockTable> 
+  <para style="Caption"><b>[[ nombre_reporte(data['form']) ]] [[ clave_registro(data['form']) ]]</b></para>
+  <spacer length="0.5cm"/>
+  </pto_header>
+   <!--#empieza impresion-->
+    <blockTable colWidths="200.0,100.0,300.0,200.0" style="Table_compra">
+      <tr>
+        <td>
+          <para style="terp_default_Centre_9">
+            SUPERMAS
+            <font color="white"> </font>
+          </para>
+        </td>
+        <td>
+          <para style="terp_default_8">
+          </para>
+        </td>
+        <td>
+        <para style="terp_default_9"></para>
+        </td>
+        <td>
+        <para style="terp_default_8">Impresion: [[ formatLang(time.strftime("%Y-%m-%d"), date=True) ]]</para>
+        </td>
+      </tr>
+    </blockTable>
+  
+   <para style="Caption"><b> [[ nombre_reporte(data['form']) ]] [[ clave_registro(data['form']) ]]</b></para>
+    <spacer length="0.5cm"/>
+    <blockTable colWidths="300.0,80.0,100.0,200.0" style="Table_compra">
+      <tr>
+        <td>
+          <para style="terp_default_9">[[ realizo(data['form']) ]]</para>
+        </td>
+        <td>
+          <para style="terp_default_9"><font color="white"></font></para>
+        </td>
+        <td>
+        <para style="terp_default_9"><font color="white"> </font> </para>
+        </td>
+        <td>
+        <para style="terp_default_9">[[ fecha_mov(data['form']) ]]</para>
+        </td>
+      </tr>
+    </blockTable>
+    <spacer length="0.5cm"/>
+    <!-- #tabla de relacion a account_move_line-->
+    <blockTable colWidths="70.0, 100.0, 190.0, 150.0, 50.0, 50.0, 50.0, 100.0" style="Tabla_header">
+      <tr>
+        <td>
+          <para style="terp_tblheader_General_Centre">Codigo</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">Producto</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">Origen</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">Destino</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">Cantidad</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">Precio</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">Merma</para>  
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">Capturo</para>
+        </td>
+      </tr>
+    </blockTable>
+    
+    <blockTable colWidths="70.0, 100.0, 190.0, 150.0, 50.0, 50.0, 50.0, 100.0" style="Table1">
+      
+      <tr> [[ repeatIn(get_datos_merma(data['form']), 'ref') ]]
+        <td>
+          <para style="terp_default_Centre_8">[[ ref['codigo'] ]] </para>
+        </td>
+        <td>
+          <para style="terp_default_Centre_8">[[ ref['producto'] ]] </para>
+        </td>
+        <td>
+         <para style="terp_default_Centre_8">[[ ref['origen'] ]] </para>
+        </td>
+        <td>
+          <para style="terp_default_Centre_8">[[ ref['destino'] ]] </para>
+        </td>
+        <td>
+          <para style="terp_default_Centre_8">[[ ref['cantidad'] ]] [[ ref['unidad'] ]]</para>
+        </td>
+        <td>
+          <para style="terp_default_Centre_8">$ [[ ref['precio'] ]] </para>
+        </td>
+        <td>
+          <para style="terp_default_Centre_8">[[ ref['cantidad_banco'] == None and '0.0' or ref['cantidad_banco'] ]] [[ ref['unidad'] ]]</para>
+        </td>
+        <td>
+         <para style="terp_default_Centre_8">[[ ref['name_login'] ]]</para>
+        </td>
+      </tr>
+    </blockTable>
+    <blockTable colWidths="70.0, 100.0, 190.0, 150.0, 50.0, 50.0, 50.0, 100.0" style="Tabla_header">
+      <tr>[[repeatIn(get_sumas_merma(data['form']), 'sum') ]]
+        <td>
+          <para style="terp_tblheader_General_Centre"><font color="white"></font></para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre"><font color="white"></font></para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre"></para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre"><font color="white"></font></para>
+        </td>
+        <td>				
+					
+          <para style="terp_tblheader_General_Centre">[[ sum['cantidad_product'] == None and '0.0' or sum['cantidad_product'] ]] [[ ref['unidad'] ]]</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre"><font color="white"></font></para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre">[[ sum['cantidad_banco'] == None and '0.0' or sum['cantidad_banco'] ]] [[ ref['unidad'] ]]</para>
+        </td>
+        <td>
+          <para style="terp_tblheader_General_Centre"></para>  
+        </td>
+
+      </tr>
+    </blockTable>
+   
+  </pto>
+  </story>
+</document>

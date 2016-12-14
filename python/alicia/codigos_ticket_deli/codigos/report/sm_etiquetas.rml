@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- @autor       : SUPERMAS-ARC -->
+<!-- RML Documento -->
+
+<document filename="etiquetas.pdf">
+	<template pageSize="(8.500in.0,11.000in)" leftMargin="72">
+	<pageTemplate>
+			<frame id="first" x1="0.11811in" y1="-0.0200in" width="2.066924in" height="11.100in"/>
+			<frame id="c2-second" x1="2.185034in" y1="-0.0200in" width="2.066924in" height="11.100in"/>
+			<frame id="c3-second" x1="4.251958in" y1="-0.0200in" width="2.066924in" height="11.100in"/>
+			<frame id="c4-second" x1="6.318882in" y1="-0.0200in" width="2.066924in" height="11.100in"/>		
+	</pageTemplate>
+	</template>
+	<stylesheet>
+		<initialize>
+		</initialize>
+		<blockTableStyle id="etiqueta">
+			<blockAlignment value="CENTER"/>
+			<lineStyle kind="GRID" colorName="#fafafa"/>
+			<lineStyle kind="OUTLINE" colorName="#fafafa" thickness="1"/>
+		</blockTableStyle>
+		<paraStyle name="P6"
+							 fontName="Helvetica"
+							 fontSize="8.0"
+							 alignment="CENTER"
+							 />
+		<paraStyle name="P9"
+							 fontName="Helvetica-Bold"
+							 fontSize="19.0"
+							 alignment="CENTER"
+							 />
+				<paraStyle name="PF"
+							 fontname="Courier" 	 
+							 fontSize="5.0"
+							 alignment="justify"
+							 leading="-15"/>
+				
+				<paraStyle name="PE"
+							 fontname="Helvetica" 	 
+							 fontSize="6.0"
+							 backColor ="#ffffff"
+							 alignment="CENTER"
+							 leading="8.0"
+							 />				
+	</stylesheet>
+	<story>
+		<blockTable colWidths="2.066924in" style="etiqueta" rowHeights="1.2130in">	
+      <tr>
+        <td>[[ repeatIn(get_datos_etiquetas(), 'ref') ]]
+					<para style="PF">[[ ref['fecha_muestra'] ]] </para>
+					<para style="P6">[[ ref['nombre'] ]]</para>
+					<spacer length="0.070in"/>
+					<para style="P9">$ [[ ref['precio_s'] ]]</para>
+					<spacer length="0.20in"/>
+					<para style="PE">[[ ref['ean13'] ]] </para>
+					<para style="P6"> [[ setTag('para','image',{'file':ref['ruta'], 'width':'2.000in','height':'0.250in'}) ]] </para>
+        </td>
+      </tr>
+    </blockTable>
+	</story>
+</document>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menus XML -->
+<openerp>
+  <data>
+        <menuitem id="top_codigo" name="SM Etiquetas" sequence="1000"/>
+          <menuitem id="top_lista" name="Generador" sequence="300" parent="codigos.top_codigo"/>
+  </data>
+</openerp>

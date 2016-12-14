@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+
+<openerp>
+	<data>
+		
+		<!-- Tree View Records -->	
+	
+		<record model="ir.ui.view" id="view_sucursal_tree">		 
+			<field name="name">sucursal.tree</field>
+			<field name="model">sucursal</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Sucursales">
+          <field name="codigo"/>
+					<field name="sucursal"/>
+          <field name="direccion"/>
+          <field name="telefono"/>
+				</tree>
+			</field>
+		</record>
+	
+		<!-- Form View Records -->	
+	
+		<record model="ir.ui.view" id="view_sucursal_form">
+			<field name="name">sucursal.form</field>
+			<field name="model">sucursal</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Sucursales">
+					<group col="2" colspan="2">
+						<field name="clave"/>
+            <field name="codigo"/>
+						<field name="sucursal"/>
+            <field name="direccion"/>
+            <field name="telefono"/>
+            <field name="municipio"/>
+            <field name="estado_pais"/>
+						<field name="activo"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Search View Records -->
+	
+		<record  model="ir.ui.view" id="view_sucursal_search">
+			<field name="name">sucursal.search</field>
+			<field name="model">sucursal</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Sucursales">
+					<field name="sucursal"/>
+					<field name="codigo"/>
+				</search>
+			</field>
+		</record>
+	
+		<!-- Action Records -->	
+	
+		<record model="ir.actions.act_window" id="action_sucursal">
+			<field name="name">Sucursal</field>
+			<field name="view_id" ref="view_sucursal_tree"/>
+			<field name="res_model">sucursal</field>
+		</record>
+		
+		<!-- Menu Items -->	
+		
+		<menuitem name="Lista de Sucursales"
+							parent="hardware_inventory.top_sucursales"
+							id="list_sucursales"
+							action="action_sucursal"/>
+		
+	</data>
+</openerp>

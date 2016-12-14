@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menus XML -->
+<openerp>
+  <data>
+    
+        <menuitem id="top_inventario" name="SM Hardware" sequence="100"/>
+        <menuitem id="top_hardware" name="Hardware" sequence="030" parent="hardware_inventory.top_inventario"/>
+        <menuitem id="top_administracion" name="Administration" sequence="050" parent="hardware_inventory.top_inventario"/>
+  </data>
+</openerp>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menus XML -->
+<openerp>
+  <data>
+    <menuitem id="top_menu_merma" name="SM Control de Merma" sequence="200"/>
+    <menuitem id="seccion_control" name="Control de Merma" sequence="150" parent="sm_merma.top_menu_merma"/>
+    <menuitem id="seccion_registro" name="Registro Producto" sequence="250" parent="sm_merma.top_menu_merma"/>
+  </data>
+</openerp>

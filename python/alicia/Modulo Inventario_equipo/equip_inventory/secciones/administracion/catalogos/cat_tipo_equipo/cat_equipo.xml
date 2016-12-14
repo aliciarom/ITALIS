@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+
+<openerp>
+	<data>
+		
+		<!-- Tree View Records -->	
+	
+		<record model="ir.ui.view" id="view_cat_equipo_tree">		 
+			<field name="name">cat_equipo.tree</field>
+			<field name="model">cat_equipo</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Grupos de Mantenimiento">
+					<field name="descripcion"/>
+					<field name="codigo"/>
+					<field name="activo"/>
+				</tree>
+			</field>
+		</record>
+	
+		<!-- Form View Records -->	
+	
+		<record model="ir.ui.view" id="view_cat_equipo_form">
+			<field name="name">cat_equipo.form</field>
+			<field name="model">cat_equipo</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Grupo de Mantenimiento">
+					<group col="2" colspan="2">
+						<field name="clave"/>
+						<field name="descripcion"/>
+						<field name="codigo"/>
+						<field name="detalle"/>
+						<field name="activo"/>
+					</group>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Search View Records -->
+	
+		<record  model="ir.ui.view" id="view_cat_equipo_search">
+			<field name="name">cat_equipo.search</field>
+			<field name="model">cat_equipo</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Grupo">
+					<field name="descripcion"/>
+					<field name="codigo"/>
+					<field name="activo"/>
+				</search>
+			</field>
+		</record>
+	
+		<!-- Action Records -->	
+	
+		<record model="ir.actions.act_window" id="action_cat_equipo">
+			<field name="name">Grupo</field>
+			<field name="view_id" ref="view_cat_equipo_tree"/>
+			<field name="res_model">cat_equipo</field>
+		</record>
+		
+		<!-- Menu Items -->	
+		
+		<menuitem name="Lista de Grupos"
+							parent="equip_inventory.top_catalogos"
+							id="lista_cat_equipo"
+							action="action_cat_equipo"/>
+		
+	</data>
+</openerp>

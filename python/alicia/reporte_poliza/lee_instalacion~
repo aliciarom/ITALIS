@@ -1,0 +1,11 @@
+##################################################################
+                    INSTALACION
+##################################################################
+
+En el modulo de "account" hacer lo siguiente:
+
+1.-El archivo asientos_report.xml se deja en la raiz del modulo,
+2.-Se agrega la linea 'asientos_report.xml', que es el nombre del archivo en el _openerp_.py
+3.-En la carpeta "report" se agregan los archivos "report_conta_asientoo.py" y "report_conta_asientoo.rml"
+4.-En el archivo __init__.py de la carpeta report se agrega la siguiente linea:
+'import report_conta_asientoo' 

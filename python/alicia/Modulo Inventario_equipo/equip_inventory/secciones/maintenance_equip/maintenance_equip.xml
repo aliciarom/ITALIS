@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Module XML -->
+<openerp>
+  <data>
+    
+    <!-- La vista tree o árbol es una vista en formato lista -->
+    <!--contiene la definicion de la vista-->
+		<record model="ir.ui.view" id="view_equip_maintenance_tree">		 
+			<field name="name">maintenance_equip.tree</field>
+			<field name="model">maintenance_equip</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+				<tree string="Maintenance Control">
+          <field name="date"/>
+          <field name="descripcion"/>
+          <field name="equipo_m2o_id"/>
+          <field name="type_maint"/>
+          <field name="name"/>
+          <field name="fac_costo_total"/>
+				</tree>
+			</field>
+		</record>
+		
+		<!-- Form View Records -->
+    <record model="ir.ui.view" id="view_equip_maintenance_form">
+      <field name="name">maintenance_equip.form</field>
+      <field name="model">maintenance_equip</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Maintenance Control" version="7.0" >
+          <group colspan='2' col='4'>
+            <h1>
+							<label string="N°:"/>
+							<field name="number" class="oe_inline" readonly="1" nolabel="1"/>
+              <label string="" colspan="2"/>
+              <field name="number_order" invisible="1"/>
+					  </h1>
+          </group>
+              <group  string="Information" col="4" colspan="2">
+                <field name="equipo_m2o_id"
+                       required="1"
+                       colspan="2"
+                       on_change="onchange_func(equipo_m2o_id)"
+                       domain="[
+												('status_dic', '=', 'active')
+                        ]"/>
+
+                <field name="descripcion"/>
+                <field name="nombre_equipo"/>
+                <field name="serie_equipo" attrs="{'invisible' : ['|',('descripcion','=', 'General'),('descripcion','=','Otras')] }"/>
+              </group>
+          <separator string="Maintenance"/>
+          <field name="allday" on_change="onchange_dates(date,False,False,allday)" invisible="1"/>
+          <group  colspan='2' col='6'>
+            <field name="date"
+                   required="1"
+                   colspan='2'
+                   on_change="onchange_dates(date,duration,False,allday)"/>
+            <field name="duration" widget="float_time" colspan='2'
+                on_change="onchange_dates(date,duration,False,allday)" />
+            <field name="date_deadline" required="1" colspan='2'
+                on_change="onchange_dates(date,False,date_deadline)"/>
+            <field name="show_as" invisible="1"/>
+            <field name="type_maint" required="1"/>
+            <field name="responsible" colspan="2"/>
+            <field name="name" colspan="2"/>
+          </group>
+          <notebook>
+          
+            <page string="Report" >
+              <group col="2" colspan="2">
+                <label string="Defects according to the user" colspan="2"/>
+                <field name="causes" nolabel="1" colspan="2"/>
+                <label string="Diagnostic" colspan="2"/>
+                <field name="diagnostic" nolabel="1" colspan="2"/>
+              </group>
+            </page>
+            <page string="Service Performed">
+              
+              <group col="4" colspan="2">
+                <label string="Detailed Description" colspan="2"/>
+                <field name="piece_change" nolabel="1"
+                       attrs="{'required' : [ ( 'type_maint', '=', 'preventive' ), ( 'type_maint', '=', 'corrective' )] }"
+                       colspan="4"/>
+                <field name="cost_repair" attrs="{'required' : [ ( 'type_maint', '=', 'preventive' ), ( 'type_maint', '=', 'corrective' )] }"
+                       colspan="2"/>
+              </group>
+              <group col="2" colspan="2">
+                <group string="Invoices" colspan="2" > 
+                  <field name="invoice_m2o_id"
+                         colspan="2"/>
+                  <field name="fac_costo_total"
+                         colspan="2"/>
+                 
+                </group>  
+              </group>
+            </page>
+					</notebook>
+        </form>
+      </field>
+    </record>
+    
+            <!-- Event calendar view -->
+    <record model="ir.ui.view" id="event_calendar_view">
+      <field name="name">maintenance_equip.calendar</field>
+      <field name="model">maintenance_equip</field>
+      <field name="priority" eval="2"/>
+      <field name="arch" type="xml">
+        <calendar string="Maintenance Control Schedule" date_start="date" color="equipo_m2o_id" date_delay="duration">
+           <field name="equipo_m2o_id"/>
+           <field name="type_maint"/>
+        </calendar>
+      </field>
+    </record>
+    
+    <!-- Search View Records -->
+		<record  model="ir.ui.view" id="view_equip_maintenance_search">
+			<field name="name">maintenance_equip.search</field>
+			<field name="model">maintenance_equip</field>
+			<field name="type">search</field>
+			<field name="arch" type="xml">					
+				<search string="Maintenance Control">
+          <field name="number_order"/>
+          <field name="type_maint"/>
+          <field name="descripcion"/>
+          <field name="equipo_m2o_id" colspan="2"/>
+				</search>
+			</field>
+    </record>
+  <!-- Action Records -->	
+		<record model="ir.actions.act_window" id="action_equip_maintenance">
+			<field name="name">Maintenance Control</field>
+			<field name="view_id" ref="view_equip_maintenance_tree"/>
+			<field name="view_mode">calendar,tree,form</field>
+			<field name="res_model">maintenance_equip</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="view_type">form</field>
+		</record>
+
+		<!-- Menu Items -->	
+		<menuitem name="Maintenance Control"
+							parent="equip_inventory.top_equipo"  
+							id="list_equip_maintenance"
+							action="action_equip_maintenance"
+              sequence="100"/> 
+  </data>
+</openerp>

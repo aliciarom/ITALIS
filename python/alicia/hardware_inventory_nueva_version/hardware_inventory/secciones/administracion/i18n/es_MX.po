@@ -1,0 +1,106 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* hardware_inventory
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0-20140616-231123\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-13 16:32+0000\n"
+"PO-Revision-Date: 2015-05-13 11:44-0600\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: hardware_inventory
+#: view:hardware:0
+#: model:ir.actions.act_window,name:hardware_inventory.action_hardware
+#: model:ir.model,name:hardware_inventory.model_hardware
+msgid "hardware"
+msgstr "hardware"
+
+#. module: hardware_inventory
+#: field:hardware,hd_capacity:0
+msgid "HD Capacity"
+msgstr " Capacidad HD"
+
+#. module: hardware_inventory
+#: field:hardware,last_maintenance_date:0
+msgid "Last Maintenance Date"
+msgstr "Last Maintenance Date"
+
+#. module: hardware_inventory
+#: view:hardware:0
+msgid "Información"
+msgstr "Información"
+
+#. module: hardware_inventory
+#: view:hardware:0
+#: model:ir.ui.menu,name:hardware_inventory.inventarioo_hardware
+msgid "Inventario de Hardware"
+msgstr "Inventario de Hardware"
+
+#. module: hardware_inventory
+#: field:hardware,brad:0
+msgid "Brand"
+msgstr "Marca"
+
+#. module: hardware_inventory
+#: field:hardware,ram:0
+msgid "RAM"
+msgstr "RAM"
+
+#. module: hardware_inventory
+#: model:ir.ui.menu,name:hardware_inventory.top_inventario
+msgid "INVENTARIO DE HARDWARE"
+msgstr "INVENTARIO DE HARDWARE"
+
+#. module: hardware_inventory
+#: field:hardware,serial_number:0
+msgid "Serial Number"
+msgstr "Numero de Serie"
+
+#. module: hardware_inventory
+#: model:ir.ui.menu,name:hardware_inventory.top_hardware
+#: model:ir.ui.menu,name:hardware_inventory.top_hardware_lista
+msgid "Hardware"
+msgstr "Hardware"
+
+#. module: hardware_inventory
+#: field:hardware,description:0
+msgid "Descripcion"
+msgstr "Descripcion"
+
+#. module: hardware_inventory
+#: field:hardware,mac:0
+msgid "MAC"
+msgstr "MAC"
+
+#. module: hardware_inventory
+#: field:hardware,location:0
+msgid "Location"
+msgstr "Locacion"
+
+#. module: hardware_inventory
+#: field:hardware,key:0
+msgid "Key"
+msgstr "Clave"
+
+#. module: hardware_inventory
+#: field:hardware,cost_hardware:0
+msgid "Cost Hardware"
+msgstr "Costo de  Hardware"
+
+#. module: hardware_inventory
+#: field:hardware,model:0
+msgid "Model"
+msgstr "Modelo"
+
+#. module: hardware_inventory
+#: field:hardware,next_maintenance_date:0
+msgid "Next Maintenance"
+msgstr "Siguiente Mantenimiento"

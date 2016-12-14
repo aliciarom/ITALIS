@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+
+<!-- XML Módulo -->
+
+<openerp>
+	<data>
+	
+		<!-- Sección de Form(s) Record(s) -->
+		<!-- El tipo "object" en el tag button es obligatorio -->
+		<!-- En el atributo name del tag button lleva el nombre de la función que imprime el reporte -->
+		
+		<record id="wizard_deli_view" model="ir.ui.view">
+			<field name="name">Generador de Etiquetas Deli</field>
+			<field name="model">wizard_deli</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Etiquetas">
+          <group string="Insertar Código" colspan='4' col='4'>
+            <field name="cod_number" colspan='2'/>
+						<label string=" " colspan="2"/>
+						<field name="divide_etiquetas" colspan='2'/>
+						<label string=" " colspan="2"/>
+						<field name="cod_number2" colspan='2' attrs="{ 'invisible' : [ ( 'divide_etiquetas', '=', False )], 'required' : [ ( 'divide_etiquetas', '=', True )] }"/>
+						<label string=" " colspan="2"/>
+						<field name="cod_number3" colspan='2'  attrs="{ 'invisible' : [ ( 'divide_etiquetas', '=', False )], 'required' : [ ( 'divide_etiquetas', '=', True )] }"/>
+            
+          </group>
+					<group col="4" colspan="4">
+						<button icon="gtk-cancel" special="cancel" string="Cancelar" colspan="2"/>
+            <button name="obtenerCodigos"
+											string="Generar Etiquetas"
+											type="object"
+											class="oe_highlight"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	
+		<!-- Sección de Action(s) Record(s) -->
+		
+		<record id="action_wizard_deli_report" model="ir.actions.act_window">
+			<field name="name">Generador de Etiquetas Deli</field>
+			<field name="res_model">wizard_deli</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="wizard_deli_view"/>
+			<field name="target">new</field>
+		</record>
+		
+		<!-- Sección de Menu(s) Record(s) -->
+		
+		<menuitem icon="STOCK_PRINT"
+			id="menu_wizard_deli"
+			name="Generar Etiquetas Deli"
+			action="action_wizard_deli_report"
+			parent="codigos.top_lista"/>
+	</data>
+</openerp>

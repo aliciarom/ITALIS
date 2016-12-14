@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+
+<!-- XML Módulo -->
+
+<openerp>
+	<data>
+	
+		<!-- Sección de Form(s) Record(s) -->
+
+		<record id="wizard_move_stock_user_view" model="ir.ui.view">
+			<field name="name">Stock movements</field>
+			<field name="model">wizard_move_stock_user</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<form string="Movement of Stock">
+          <group string="select the search options" colspan='2' col='2'>
+							<field name="ean13" colspan="2"/>
+							<label string=" " colspan="2"/>
+							<field name="select_option" colspan="2"/>
+							<field name="date_now" colspan="2" attrs="{'invisible' : [ ( 'select_option', '!=', 'x_day' )], 'required': [['select_option', '=', 'x_day']]}"/>
+							<field name="month" attrs="{'invisible' : [ ( 'select_option', '!=', 'x_month' )] ,'required': [['select_option', '=', 'x_month']]}"/>
+							<field name="year_previous" attrs="{'invisible' : [ ( 'select_option', '!=', 'x_month' )] }"/>
+							<label string=" " colspan="2"/>
+          </group>
+					<group col="4" colspan="4">
+						<button icon="gtk-cancel" special="cancel" string="Cancel" colspan="2"/>
+            <button name="obtenerReporte"
+											string="Print"
+											type="object"
+											class="oe_highlight"/>
+					</group>
+				</form>
+			</field>
+		</record>
+	
+		<!-- Sección de Action(s) Record(s) -->
+		
+		<record id="action_wizard_move_stock_user_report" model="ir.actions.act_window">
+			<field name="name">Movement of stock</field>
+			<field name="res_model">wizard_move_stock_user</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="view_id" ref="wizard_move_stock_user_view"/>
+			<field name="target">new</field>
+		</record>
+		
+		<menuitem icon="STOCK_PRINT"
+			id="menu_wizard_move_stock_stock"
+			name="Movement of Stock"
+			action="action_wizard_move_stock_user_report"
+			parent="sm_reports.list_report_stock"/>		
+		<!-- Sección de Menu(s) Record(s) -->
+		
+		<!--<menuitem icon="STOCK_PRINT"-->
+		<!--	id="menu_wizard_move_stock_user"-->
+		<!--	name="Movement of Stock"-->
+		<!--	action="action_wizard_move_stock_user_report"-->
+		<!--	parent="sm_reports.list_report"/>-->
+		
+		<!--<menuitem icon="STOCK_PRINT"-->
+		<!--	id="menu_wizard_move_stock_stock"-->
+		<!--	name="Movement of Stock"-->
+		<!--	action="action_wizard_move_stock_user_report"-->
+		<!--	parent="stock.menu_traceability"/>-->
+		
+
+
+	</data>
+</openerp>

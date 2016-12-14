@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- @auto: SUPERMAS-ARC -->
+<!-- RML Documento -->
+
+<document filename="etiquetas_deli.pdf">
+	<template pageSize="(8.500in.0,11.000in)" leftMargin="72">
+	<pageTemplate>
+			<frame id="first" x1="0.2755906in" y1="0.2755906in" width="2.401575in" height="10.23622in"/>
+			<frame id="c2-second" x1="3.0314966in" y1="0.2755906in" width="2.401575in" height="10.23622in"/>
+			<frame id="c3-second" x1="5.7874026in" y1="0.2755906in" width="2.401575in" height="10.23622in"/>
+	</pageTemplate>
+	</template>
+	<stylesheet>
+		<initialize>
+		</initialize>
+		<blockTableStyle id="etiqueta">
+			<blockAlignment value="CENTER"/>
+			<!--<lineStyle kind="GRID" colorName="#E6E6E6"/>-->
+			<!--<lineStyle kind="OUTLINE" colorName="#E6E6E6" thickness="1"/>-->
+		</blockTableStyle>
+		<paraStyle name="P6"
+							 fontName="Helvetica"
+							 fontSize="8.0"
+							 alignment="CENTER"
+							 />
+		<paraStyle name="P9"
+							 fontName="Helvetica-Bold"
+							 fontSize="19.0"
+							 alignment="CENTER"
+							 />
+				<paraStyle name="PR"
+							 fontname="Times-BoldItalic" 	 
+							 fontSize="14.0"
+							 alignment="CENTER"
+							 />
+				
+				<paraStyle name="PE"
+							 fontname="Helvetica-BoldOblique" 	 
+							 fontSize="10.0"
+							 alignment="CENTER"
+							 leading="8.0"
+							 />				
+	</stylesheet>
+	<story>
+		<blockTable colWidths="2.480315in" style="etiqueta" rowHeights="0.9842520in">
+      <tr>
+        <td>[[ repeatIn(get_datos_etiquetas(), 'ref') ]]
+					<para style="PR">[[ ref['ref'] ]]</para>
+					<spacer length="0.070in"/>
+					<para style="PE">[[ ref['nombre'] ]]</para>
+					<spacer length="0.1181102in"/>
+					<para style="P6">¡Gracias por su Preferencia!</para>
+					<spacer length="0.1181102in"/>
+        </td>
+      </tr>
+    </blockTable>
+	</story>
+</document>

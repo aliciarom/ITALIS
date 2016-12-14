@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Menus XML -->
+<openerp>
+  <data>
+        <menuitem id="top_auxiliares" name="SM Auxiliares" sequence="1000"/>
+          <menuitem id="top_auxiliar" name="Auxiliares Contables" sequence="300" parent="auxiliares.top_auxiliares"/>
+  </data>
+</openerp>
